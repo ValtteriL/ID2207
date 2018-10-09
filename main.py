@@ -1,6 +1,4 @@
-from database import Employees
-from database import Privileges
-from database import Actions
+import database
 
 def login():
     while(True):
@@ -8,9 +6,9 @@ def login():
         username = input("Username: ")
         password = input("Password: ")
 
-        if username in Employees and Employees[username].password == password:
+        if username in database.Employees and database.Employees[username].password == password:
             print("Login succeeded!\n")
-            return Employees[username]
+            return database.Employees[username]
         
         print("Login failed\n")
 
@@ -23,13 +21,14 @@ def main():
         print("Your position is {}.".format(employee.position))
 
         print("Your available actions:")
-        for priv in Privileges[employee.position]:
-            print("\t{} = {}".format(priv, Actions[priv][0]))
+        for priv in database.Privileges[employee.position]:
+            print("\t{} = {}".format(priv, database.Actions[priv][0]))
 
-        choice = input("What do you wanna do?")
+        choice = input("\nWhat do you wanna do?")
 
-
-        if choice not in Privileges[employee.position]:
+        if choice not in database.Actions.keys():
+            print("No such operation")
+        elif choice not in database.Privileges[employee.position]:
             # the user is NOT allowed to invoke this function
             print("Insufficient privileges")
         else:
@@ -40,7 +39,8 @@ def main():
                 main()
             else:
                 # invoke the method saved into Actions
-                Actions[choice][1]()
+                database.Actions[choice][1]()
 
 if __name__ == "__main__":
+    database.init() # initialize database
     main()
