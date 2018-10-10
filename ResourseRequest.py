@@ -1,4 +1,4 @@
-class ResourseRequest:
+class ResourceRequest:
       clientname=None
       department=None
       number=None
