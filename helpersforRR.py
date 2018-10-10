@@ -1,9 +1,9 @@
-from ResourseRequest import ResourseRequest
+from ResourceRequest import ResourceRequest
 import database
-#creat ResourseRequest
+#creat ResourceRequest
 
 def crr():
-    print('\n##Creating new ResourseRequest##')
+    print('\n##Creating new ResourceRequest##')
     clientname=input('ClientName:')
     department=input('Department: ')
     number=input('The Number of Requested Staff: ')
@@ -11,40 +11,40 @@ def crr():
     experience=input('The Experience of Requested Staff ')
     details=input('The More Details:')
 
-    rrequest=ResourseRequest(clientname,department,number,field,experience,details)
-    database.ResourseRequestList.append(rrequest)
+    rrequest=ResourceRequest(clientname,department,number,field,experience,details)
+    database.ResourceRequestList.append(rrequest)
     print('\n')
 
 def vrr():
-    if len(database.ResourseRequestList)>0:
-        print('\nChoose ResourseRequest to View')
-        for index ,request in enumerate (database.ResourseRequestList):
+    if len(database.ResourceRequestList)>0:
+        print('\nChoose ResourceRequest to View')
+        for index ,request in enumerate (database.ResourceRequestList):
             print('{}={}'.format(index,request.clientname))
         choice=int(input('>'))
-        if choice<len(database.ResourseRequestList):
-            print('\n## Viewing ResourseRequest##')
-            database.ResourseRequestList[choice].printRR()
+        if choice<len(database.ResourceRequestList):
+            print('\n## Viewing ResourceRequest##')
+            database.ResourceRequestList[choice].printRR()
         else:
             print('Invalid selection')
 
     else:
-        print('There are no ResourseRequests!')
+        print('There are no ResourceRequests!')
 
     print('\n')
 
 def drr():
-    if len(database.ResourseRequestList)>0:
-        print('\nChoose ResourseRequest to Delet')
-        for index ,request in enumerate (database.ResourseRequestList):
+    if len(database.ResourceRequestList)>0:
+        print('\nChoose ResourceRequest to Delet')
+        for index ,request in enumerate (database.ResourceRequestList):
             print('{}={}'.format(index,request.clientname))
         choice=int(input('>'))
-        if choice<len(database.ResourseRequestList):
-            del database.ResourseRequestList[choice]
+        if choice<len(database.ResourceRequestList):
+            del database.ResourceRequestList[choice]
             print('Delet successfully!')
         else:
             print('Invalid selection')
     else:
-        print('There are no ResourseRequests')
+        print('There are no ResourceRequests')
     
     print('\n')            
         
