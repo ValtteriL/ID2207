@@ -8,6 +8,8 @@ class EventRequest:
     details = None
     budget = None
 
+    project = None
+
     accepted = False
     rejected = False
     
