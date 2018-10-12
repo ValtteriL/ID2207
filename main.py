@@ -37,6 +37,8 @@ def main():
             if choice == 'q':
                 print("Logged out.\n")
                 main()
+            elif choice == 'csp':
+                database.Actions[choice][1](employee)
             else:
                 # invoke the method saved into Actions
                 database.Actions[choice][1]()

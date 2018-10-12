@@ -1,4 +1,4 @@
-class subteamplan:
+class SubteamPlan:
 
     EmployeeID=None
     department = None

@@ -122,10 +122,10 @@ def ust():
     # Update the task
     if chosentask:
         print("\n## Updating Sub-team Task {} ##".format(choice))
-        taskname = input('Task Name ({}): '.format(chosentask.taskname))
-        department = input('Task Name ({}): '.format(chosentask.department))
-        time = input('Task Name ({}): '.format(chosentask.time))
-        details = input('Task Name ({}): '.format(chosentask.details))
+        taskname = input('Task name ({}): '.format(chosentask.taskname))
+        department = input('Task department ({}): '.format(chosentask.department))
+        time = input('Task time ({}): '.format(chosentask.time))
+        details = input('Task details ({}): '.format(chosentask.details))
 
         # replace the old sub-teamtask with the new data            ######### does this really update it?
         project.tasks[choice] = SubteamTask(
@@ -170,7 +170,7 @@ def ast():
         if len(project.tasks) > 0:
             # there are tasks in this project
 
-            print("\nChoose SubteamTask to view")
+            print("\nChoose SubteamTask to assign")
 
             for index, task in enumerate(project.tasks):
                 print("{} = {}".format(index, task.taskname))
@@ -187,12 +187,12 @@ def ast():
             print("Choose worker to assign to")
             for index, worker in enumerate(project.workers):
                 print("{} = {} {}".format(index, worker.firstname, worker.lastname))
-                choice = int(input(">"))
-                if choice < len(project.workers):
-                    chosentask.assignedTo = project.workers[choice]             ######### does this really update it?  
-                    print("SubteamTask assigned to the selected worker")
-                else:
-                    print("Invalid selection!")
+            choice = int(input(">"))
+            if choice < len(project.workers):
+                chosentask.assignedTo = project.workers[choice]             ######### does this really update it?  
+                print("SubteamTask assigned to the selected worker")
+            else:
+                print("Invalid selection!")
         else:
             print("No workers associated with this project!")
 
